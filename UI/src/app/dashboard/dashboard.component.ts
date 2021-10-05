@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
+import { WebsocketService } from '../websocket.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -13,7 +14,7 @@ export class DashboardComponent {
     map(({ matches }) => {
       if (matches) {
         return [
-          { title: 'Card 1', cols: 1, rows: 1 },
+          { title: 'Card 1', cols: 2, rows: 1 },
           { title: 'Card 2', cols: 1, rows: 1 },
           { title: 'Card 3', cols: 1, rows: 1 },
           { title: 'Card 4', cols: 1, rows: 1 }
@@ -21,7 +22,7 @@ export class DashboardComponent {
       }
 
       return [
-        { title: 'Card 1', cols: 2, rows: 1 },
+        { title: 'Card 1', cols: 2, rows: 2 },
         { title: 'Card 2', cols: 1, rows: 1 },
         { title: 'Card 3', cols: 1, rows: 2 },
         { title: 'Card 4', cols: 1, rows: 1 }
@@ -29,5 +30,19 @@ export class DashboardComponent {
     })
   );
 
-  constructor(private breakpointObserver: BreakpointObserver) {}
+  constructor(
+    private breakpointObserver: BreakpointObserver,
+    private socketService: WebsocketService
+  ) {}
+
+    ngOnInit() {
+        //this.socketService.socket.emit('config', 'getconfig')
+    }
+    ngOnDestroy() {
+      
+    }
+    loadData(){
+      
+    }
+
 }

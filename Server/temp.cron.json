@@ -1,0 +1,17 @@
+[
+
+  {
+    "cron": "",
+    "name": "",
+    "function": "",
+    "description": "",
+    "active": false
+  },
+    {
+    "cron": "* * * * * *",
+    "name": "",
+    "function": "",
+    "description": "",
+    "active": false
+  }
+]

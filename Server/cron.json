@@ -1,0 +1,32 @@
+{"cron":
+  [
+    {
+      "cron": "",
+      "name": "",
+      "function": "",
+      "description": "",
+      "active": false
+    },
+      {
+      "cron": "* * * * * *",
+      "name": "",
+      "function": "",
+      "description": "",
+      "active": false
+    }
+  ],
+  "functionlist":[
+    {
+      "name":"",
+      "process":[
+        {"pin": 1,
+          "set" "hight",
+        "delay":0,
+        "time":0
+        }
+      ]
+
+    }
+  ]
+
+}

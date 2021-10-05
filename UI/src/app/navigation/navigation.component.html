@@ -5,9 +5,11 @@
       [opened]="(isHandset$ | async) === false">
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item href="#">Link 1</a>
-      <a mat-list-item href="#">Link 2</a>
-      <a mat-list-item href="#">Link 3</a>
+      <a mat-list-item [routerLink]="['/']"  >Dashboard</a>
+      <a mat-list-item [routerLink]="['/tasks']" >Tasks</a>
+      <a mat-list-item [routerLink]="['/schedules']" >Schedules</a>
+      <a mat-list-item [routerLink]="['/setup']" >Settings</a>
+      <a mat-list-item [routerLink]="['/config']" >Config</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -20,7 +22,9 @@
         *ngIf="isHandset$ | async">
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
-      <span>AquarinoidUI</span>
+      <span>AquarinoidUI</span> 
+      <mat-icon aria-label="" *ngIf="socketService.socket.connected" class="green-icon material-icons-outlined" [ngStyle]="{'color': 'green'}">link</mat-icon> 
+      <mat-icon aria-label="" *ngIf="!socketService.socket.connected" class="material-icons-outlined" style="color: red;">link_off</mat-icon> 
     </mat-toolbar>
     <router-outlet></router-outlet>
   </mat-sidenav-content>

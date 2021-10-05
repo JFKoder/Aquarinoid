@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { WebsocketService } from '../websocket.service';
+
 
 @Component({
   selector: 'app-login',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor(private socketService: WebsocketService) {}
+  
+  ngOnInit() {
+    this.socketService.setupSocketConnection();
   }
+ngOnDestroy() {
+  this.socketService.disconnect();
+}
+loadData(){
+  
+}
+
+
+  
+  
 
 }

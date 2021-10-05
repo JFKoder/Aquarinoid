@@ -1,0 +1,17 @@
+D0 = GPIO16 = Relais 1 = 12 V Sopply =Hight at boot
+D1 = GPIO5  = Relais 2 = 230 V out1
+D2 = GPIO4  = Relais 3 = 230 V out2
+D3 = GPIO0  = Relais 4 = 230 V out3 = connected to FLASH button, boot fails if pulled LOW
+D4 = GPIO2  = Relais 5 = 12V out1 = connected to on-board LED, boot fails if pulled LOW
+D5 = GPIO14 = Relais 6 = 12V out2 
+D6 = GPIO12 = Relais 7 = leer 
+D7 = GPIO13 = Relais 8 = leer 
+
+Hight at boot:
+    GPIO16
+    GPIO3
+    GPIO1
+    GPIO10
+    GPIO9
+    
+    https://randomnerdtutorials.com/esp8266-pinout-reference-gpios/
