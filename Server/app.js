@@ -1,7 +1,6 @@
 'use strict';
 const fs = require('fs');
 
-const find = require('local-devices');
 
 const conf = require('./config/config')
 const BC = require('./boardcontroller/BoardController')
