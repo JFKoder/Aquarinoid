@@ -6,7 +6,9 @@ config.json
 /out-tsc
 # Only exists if Bazel was run
 /bazel-out
-
+/certs
+*.cert
+*.key
 # dependencies
 /node_modules
 

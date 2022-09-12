@@ -14,6 +14,10 @@ config: Config | undefined;
      return this.http.get<Config>('/api/getconfig').subscribe((data: Config) => this.config = { ...data });;
   }
 
+  getHumidity(){
+    return this.http.get('https://10.8.0.6/api/gethumidity').subscribe((data: any) =>  {  data });;
+  }
+
 }
 export interface Config {
   controller: Controller;

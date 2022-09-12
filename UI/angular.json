@@ -35,7 +35,9 @@
               
               "src/styles.scss"
             ],
-            "scripts": ["./src/assets/websocket.js"]
+            "scripts": [
+              "./src/assets/websocket.js"
+            ]
           },
           "configurations": {
             "production": {

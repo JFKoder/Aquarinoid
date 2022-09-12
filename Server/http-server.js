@@ -56,6 +56,15 @@ app.get('/api/test', function(req,res){
   let resp = boco.Boards[0].request()
   return res.json( resp );
 }) 
+app.get('/test', function(req, res) {
+
+  let message = req.body.message;
+  console.log('Regular GET message: ', message);
+  return res.json({
+
+    answer: 42
+  });
+});
 
 app.all('*', function (req, res) {
     res.status(200).sendFile(`/`, {root: _app_folder});
@@ -73,5 +82,6 @@ app.post('/', function(req, res) {
     answer: 42
   });
 });
+
 
 module.exports = app;

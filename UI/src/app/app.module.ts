@@ -22,12 +22,19 @@ import { ConfigComponent } from './config/config.component';
 import { SetupComponent } from './setup/setup.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatInputModule } from '@angular/material/input';
 import { EditControllerComponent } from './config/edit-controller/edit-controller.component';
 import { MatButtonModule } from '@angular/material/button';
+ import {MatSlideToggleModule} from '@angular/material/slide-toggle'; 
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { SchedulesComponent } from './schedules/schedules.component';
 import { TasksComponent } from './tasks/tasks.component';
+import { DeletedialogComponent } from './config/deletedialog/deletedialog.component';
+import { EditpinsComponent } from './config/editpins/editpins.component';
+import { PinTestComponent } from './config/pin-test/pin-test.component';
+import { KeysPipe } from './keys.pipe';
 
+import { VisualComponent } from './dashboard/visual/visual.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +46,13 @@ import { TasksComponent } from './tasks/tasks.component';
     SetupComponent,
     EditControllerComponent,
     SchedulesComponent,
-    TasksComponent
+    TasksComponent,
+    DeletedialogComponent,
+    EditpinsComponent,
+    PinTestComponent,
+    KeysPipe,
+    VisualComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -58,7 +71,10 @@ import { TasksComponent } from './tasks/tasks.component';
     HttpClientModule,
     MatDialogModule ,
     MatFormFieldModule,
-    MatMenuModule
+    MatMenuModule,
+    MatInputModule,
+    MatSlideToggleModule,
+
   ],
   providers: [WebsocketService],
   bootstrap: [AppComponent]

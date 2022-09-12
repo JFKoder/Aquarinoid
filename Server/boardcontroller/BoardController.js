@@ -1,7 +1,14 @@
 const Board = require('./Board')
 
 module.exports = function(){
+	this.sensors = [];
 	
+	this.putSensorData = function(id,data){
+		this.sensors[id] = data
+	}
+	this.getSensorData = function(){
+		return this.sensors;
+	}
 	this.load = function(setup){
 		//console.log("Add "+ JSON.stringify(setup.config.controller))
 		for(let board in setup.config.controller){

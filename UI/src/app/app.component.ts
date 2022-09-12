@@ -14,6 +14,12 @@ export class AppComponent {
   ) {}
     ngOnInit() {
         this.socketService.setupSocketConnection();
+        this.socketService.socket.on('info', listBoards => {
+          this.socketService.socket.emit('WebApp',{type: "WebApp"})
+          
+          console.dir("Show to server i am the WebApp: ")
+        })
+        
     }
     ngOnDestroy() {
       this.socketService.disconnect();

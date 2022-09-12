@@ -1,0 +1,21 @@
+<p>
+  <mat-form-field appearance="fill">
+    <mat-label>Name</mat-label>
+    <input matInput placeholder="Placeholder" [(ngModel)]="Pins.name">
+    <mat-icon matSuffix>insert_link</mat-icon>
+    <mat-hint>Name / Decription</mat-hint>
+  </mat-form-field>
+</p>
+<p>
+  <mat-form-field appearance="fill">
+    <mat-label>PIN Number</mat-label>
+    <input matInput placeholder="Placeholder" [(ngModel)]="Pins.number">
+    <mat-icon matSuffix>insert_link</mat-icon>
+    <mat-hint>Number of the Pin</mat-hint>
+  </mat-form-field>
+</p>
+<p>
+  <mat-slide-toggle [(ngModel)]="Pins.type">Type: {{Pins.type}}</mat-slide-toggle>
+  <mat-slide-toggle [(ngModel)]="Pins.onload">OnLoad: {{Pins.onload}}</mat-slide-toggle>
+</p>
+<button mat-button mat-dialog-close>Close</button>

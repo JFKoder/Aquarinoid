@@ -6,7 +6,8 @@ import { ApiService } from '../api.service';
 
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { EditControllerComponent } from './edit-controller/edit-controller.component';
-
+import { DeletedialogComponent } from './deletedialog/deletedialog.component'
+import { PinTestComponent } from './pin-test/pin-test.component';
 
 @Component({
   selector: 'app-config',
@@ -15,7 +16,7 @@ import { EditControllerComponent } from './edit-controller/edit-controller.compo
 })
 
 export class ConfigComponent implements OnInit {
-
+  public _dataSource: any[] = [];
   constructor(
     private apiservice: ApiService,
     private socketService: WebsocketService,
@@ -24,21 +25,41 @@ export class ConfigComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
+    this.socketService.socket.on('listBoards', listBoards => {
+      this._dataSource = listBoards;
+      console.dir("Recieved BoardList: "+listBoards)
+    })
     this.showConfig();
+    this.socketService.socket.emit('config', {command: "listBoards"});
+    console.log("asked Boards")
+
   }
 
   showConfig() {
  
   }
-  
-  openDialog() {
-
+  openDeleteDialog(boardName:String) {
     const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = false;
+    dialogConfig.autoFocus = true;  
+    let dialogRef = this.dialog.open(DeletedialogComponent , dialogConfig);
+    dialogRef.componentInstance.Board = boardName
+  }
 
+  openDialog(boardName:String) {
+    const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = false;
     dialogConfig.autoFocus = true;
-
-    this.dialog.open(EditControllerComponent, dialogConfig);
+    let dialogRef = this.dialog.open(EditControllerComponent, dialogConfig);
+    dialogRef.componentInstance.Board = boardName
+  }
+  openPinTest(boardName:String) {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = false;
+    dialogConfig.autoFocus = true;
+    let dialogRef = this.dialog.open(PinTestComponent, dialogConfig);
+    dialogRef.componentInstance.Board = boardName
   }
 }
+
 

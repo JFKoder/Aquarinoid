@@ -1,0 +1,85 @@
+<div class="grid-container">
+<h1 class="mat-h1">Dashboard</h1>
+<mat-grid-list cols="2" rowHeight="350px">
+
+    <mat-grid-tile  [colspan]="2" [rowspan]="2">
+      <mat-card class="dashboard-card">
+        <mat-card-header>
+          <mat-card-title>
+            Humidity
+            <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu" xPosition="before">
+              <button mat-menu-item (click)="loadHumidity()" >update</button>
+              
+            </mat-menu>
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="dashboard-card-content">
+        <mat-form-field appearance="fill">
+          <mat-label>Choose an option</mat-label>
+          <mat-select  [(value)]="selected" (selectionChange)="loadHumidity()">
+            <mat-option value="0">last 24 h</mat-option>
+            <mat-option value="1">3 Days</mat-option>
+            <mat-option value="2" >7 Days</mat-option>
+            <mat-option value="3">All </mat-option> 
+          </mat-select>
+        </mat-form-field>
+        <div class='chart-wrapper' id='baseChartWrapper'>
+              <canvas baseChart #baseChart  height="200"
+                [data]="barChartData"
+                [options]="barChartOptions"
+                [plugins]="barChartPlugins"
+                [type]="barChartType"
+                >
+              </canvas>
+           </div>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+ 
+    <mat-grid-tile  [colspan]="1" [rowspan]="1">
+      <mat-card class="dashboard-card">
+        <mat-card-header>
+          <mat-card-title>
+            Autostart
+            <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu" xPosition="before">
+              <button mat-menu-item (click)="loadHumidity()" >update</button>
+              
+            </mat-menu>
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="dashboard-card-content">
+           <button mat-menu-item (click)="setAutostart('on')" *ngIf="!autostart">On</button>
+           <button mat-menu-item (click)="setAutostart('off')"  *ngIf="autostart">Off</button>
+           <button mat-menu-item (click)="testAuth()"  >testauth</button>
+             <div >Auth: {{auth}}</div>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+ 
+    <mat-grid-tile *ngFor="let card of cards | async" [colspan]="card.cols" [rowspan]="card.rows">
+      <mat-card class="dashboard-card">
+        <mat-card-header>
+          <mat-card-title>
+            {{card.title}}
+            <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+              <mat-icon>more_vert</mat-icon>
+            </button>
+            <mat-menu #menu="matMenu" xPosition="before">
+              <button mat-menu-item>Expand</button>
+              <button mat-menu-item>Remove</button>
+            </mat-menu>
+          </mat-card-title>
+        </mat-card-header>
+        <mat-card-content class="dashboard-card-content">
+          <div>Card Content Here</div>
+        </mat-card-content>
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>

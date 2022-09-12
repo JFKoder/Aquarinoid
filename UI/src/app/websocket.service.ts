@@ -8,11 +8,22 @@ import { DefaultEventsMap } from 'socket.io-client/build/typed-events';
 })
 export class WebsocketService {
  socket!: Socket<DefaultEventsMap, DefaultEventsMap>;
+  public sensor = {
+    pin: [
+      { name: '', pin: 0, status: 0 },
+    ],
+    board: '',
+    humidity1: 0
+  }
 
-  constructor() { }
+ public sensorData:any = [];
+  constructor() {
+    this.sensorData[this.sensor.board] = this.sensor;
+   }
 
   setupSocketConnection() {
-    this.socket = io('http://localhost:8081');    
+    this.socket = io('https://10.8.0.6');    
+
    // this.socket.emit('my message', 'Hello there from Angular.');
   }
 

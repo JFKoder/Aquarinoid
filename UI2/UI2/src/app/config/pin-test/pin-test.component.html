@@ -1,0 +1,8 @@
+<div >{{sensor.board}}</div>
+<div *ngFor="let entry of sensor.pin">
+	<span>{{entry.name}}</span>  
+	<button mat-button (click)="sendDown(entry.pin)" *ngIf="entry.status == 1"><mat-icon >power_off</mat-icon> Pin Down</button>
+	<button mat-button (click)="sendUp(entry.pin)"   *ngIf="entry.status == 0"><mat-icon >power</mat-icon> Pin Up</button> 
+	
+</div>
+<span>{{sensor.humidity1}}</span>

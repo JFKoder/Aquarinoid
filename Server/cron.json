@@ -20,7 +20,7 @@
       "name":"",
       "process":[
         {"pin": 1,
-          "set" "hight",
+          "set": "hight",
         "delay":0,
         "time":0
         }
