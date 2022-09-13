@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable,isDevMode } from '@angular/core';
 import { io, Socket } from 'socket.io-client';
 
 import { TokenStorageService } from './_services/token-storage.service';
@@ -23,11 +23,20 @@ export class WebsocketService {
    }
 
   setupSocketConnection(token: string) {
-    this.socket = io('https://192.168.0.222',{
-      auth:{
-        token: token
-      }
-    });    
+    if (isDevMode()) {
+      this.socket = io('https://192.168.0.222',{
+        auth:{
+          token: token
+        }
+      });  
+    } else {
+      this.socket = io({
+        auth:{
+          token: token
+        }
+      });  
+    }
+  
 
    // this.socket.emit('my message', 'Hello there from Angular.');
   }
