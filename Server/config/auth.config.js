@@ -1,3 +1,3 @@
 module.exports = {
-  secret: "osdkfjowifmkmlskdfmowmsasddv"
+  secret: "12345"
 };
