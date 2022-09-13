@@ -1,4 +1,6 @@
 'use strict';
+require('dotenv').config()
+
 const fs = require('fs');
 
 
@@ -24,12 +26,14 @@ let app = require('./http-server');
 app.setConfig( config );
 app.setBoCo(boco);
 
-//const server = require('http').createServer(app);
+const server = require('http').createServer(app);
 
+/*
 const server = require('https').createServer({
   key: fs.readFileSync('./Server/certs/gmsvienb444.local.key'),
   cert: fs.readFileSync('./Server/certs/gmsvienb444.local.cert')
 },app);
+*/
 const { Server } = require("socket.io");
 const io = new Server(server,  {
   cors: {
@@ -109,5 +113,5 @@ io.on('connection', (socket) => {
 
 
 
-server.listen(443);
+server.listen(process.env.PORT);
 
