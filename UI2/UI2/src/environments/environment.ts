@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  version: 'V0.0.2-alpha TESTING',
+  production: false,
+  testvar: 'Its Test'
 };
 
 /*

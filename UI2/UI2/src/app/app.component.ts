@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavigationComponent } from './navigation/navigation.component'
 import { WebsocketService } from './websocket.service';
 import { TokenStorageService } from './_services/token-storage.service';
-
+import { environment } from '../environments/environment';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -14,7 +14,7 @@ export class AppComponent {
   showAdminBoard = false;
   showModeratorBoard = false;
   username?: string;
- title = 'AquarinoidUI';
+ title = 'AquarinoidUI '+environment.version;
     constructor(
     private socketService: WebsocketService,private tokenStorageService: TokenStorageService
   ) {}
@@ -23,7 +23,7 @@ export class AppComponent {
       if(token != null )   this.socketService.setupSocketConnection(token);
         this.socketService.socket.on('info', (listBoards:any) => {
           this.socketService.socket.emit('WebApp',{type: "WebApp"})
-          
+           
           console.dir("Show to server i am the WebApp: ")
         })
           this.isLoggedIn = !!this.tokenStorageService.getToken();
