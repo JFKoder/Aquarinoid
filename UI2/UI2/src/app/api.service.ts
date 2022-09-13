@@ -12,7 +12,7 @@ const httpOptions = {
 })
 
 export class ApiService {
-  public endpoint = 'https://192.168.0.222'
+  public endpoint = ''
 
 config: Config | undefined;
   constructor(
