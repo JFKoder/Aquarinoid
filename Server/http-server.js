@@ -1,4 +1,5 @@
 'use strict';
+
 const path = require('path')
 const compression = require("compression")
 let fs = require('fs');
@@ -77,7 +78,7 @@ app.post('/api/setconfig', [authJwt.verifyToken],function(req,res){
 
 // Boardcontroller
 app.post('/api/signin', function(req,res){
-  if(req.body.password== '' && req.body.username==''){
+  if(req.body.password== process.env.ADMIN_PASSWORD && req.body.username==process.env.ADMIN){
     var token = jwt.sign({ id: 13 }, '12345', {
       expiresIn: 86400 // 24 hours
     });
