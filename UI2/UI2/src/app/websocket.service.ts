@@ -31,7 +31,7 @@ export class WebsocketService {
       });  
     } else {
       this.socket = io({
-        auth:{
+        auth:{ 
           token: token
         }
       });  
